@@ -5,14 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>AI Generator Naslova</title>
 
-<!-- Google Fonts: Poppins -->
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
 
-<!-- Font Awesome for icons -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 
 <style>
-  /* Reset */
   * {
     box-sizing: border-box;
     margin: 0;
@@ -222,7 +219,6 @@
     background-color: #7c5dfa;
   }
 
-  /* Scrollbar styling for titles container */
   #titlesContainer::-webkit-scrollbar {
     width: 9px;
   }
@@ -287,7 +283,7 @@
   <div id="keywordCount">0 ključnih reči uneto</div>
 
   <div id="titlesContainer" aria-live="polite" aria-label="Generisani naslovi">
-    <!-- Generisani naslovi -->
+    
   </div>
 
   <div id="preview" aria-label="Pregled odabranog naslova" tabindex="0">
@@ -296,7 +292,6 @@
 </div>
 
 <script>
-  // Tekstovi na srpskom i engleskom
   const translations = {
     sr: {
       placeholder: "Unesite ključne reči ovde...",
@@ -332,7 +327,6 @@
     }
   };
 
-  // Current language
   let currentLang = "sr";
 
   const keywordsInput = document.getElementById("keywordsInput");
@@ -353,7 +347,6 @@
     generateBtn.innerHTML = `<i class="fas fa-robot"></i> ${t.buttons.generate}`;
     clearBtn.innerHTML = `<i class="fas fa-trash-alt"></i> ${t.buttons.clear}`;
 
-    // Update select options
     titleTypeSelect.innerHTML = "";
     t.selectOptions.forEach(opt => {
       const option = document.createElement("option");
@@ -397,28 +390,26 @@
   function generateTitles(keywords, type) {
     titlesContainer.innerHTML = "";
     preview.textContent = translations[currentLang].previewDefault;
-
-    // Simple title generation logic with some variations:
-    // This is just demo text, real AI would call an API.
+    
     let titles = [];
     keywords.forEach(kw => {
       switch(type) {
-        case 0: // Blog
+        case 0: 
           titles.push(`Kako ${kw} može promeniti vaš život`);
           titles.push(`10 razloga zašto je ${kw} važan`);
           titles.push(`${kw}: Sve što treba da znate`);
           break;
-        case 1: // Product
+        case 1: 
           titles.push(`Premium ${kw} za svakodnevnu upotrebu`);
           titles.push(`Najbolji izbor: ${kw} po sniženoj ceni`);
           titles.push(`Kupite sada - ${kw} sa garancijom kvaliteta`);
           break;
-        case 2: // Ad
+        case 2:
           titles.push(`Ne propustite ponudu za ${kw}!`);
           titles.push(`Iskoristite šansu: ${kw} dostupno odmah`);
           titles.push(`Samo danas: Specijalna cena za ${kw}`);
           break;
-        case 3: // Email
+        case 3:
           titles.push(`Važna obavest o ${kw}`);
           titles.push(`Ponuda koja vas zanima: ${kw}`);
           titles.push(`Vaš vodič kroz svet ${kw}`);
@@ -428,7 +419,6 @@
       }
     });
 
-    // Remove duplicates & limit to max 20
     titles = [...new Set(titles)].slice(0, 20);
 
     titles.forEach(t => {
@@ -457,7 +447,6 @@
     keywordsInput.focus();
   });
 
-  // Initialize UI
   updateTexts();
 </script>
 </body>
